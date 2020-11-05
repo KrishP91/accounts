@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Current Rooms</title>
+</head>
+<body>
+    <p>
+        <form action="/roomlist/" method="post">
+            {% csrf_token %}
+            {% for room in num %}
+                <br>
+                {{ room.num }}
+                {{ room.room_type }}
+                {{ form }}
+            {% endfor %}
+
+            <br>
+            <input type="submit" value="Submit">
+        </form>
+    </p>
+
+</body>
+</html>

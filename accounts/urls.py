@@ -21,8 +21,10 @@ app_name = 'accounts'
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('accounts/signup/', views.signup_view, name = 'signup'),
+    path('signup/', views.signup_view, name = 'signup'),
     path('login/', views.login_view, name = 'login'),
     path('logout/', views.logout_view, name = 'logout'),
-    path('addroom/', views.FormView, name = 'FormView'),
+    path('addroom/', views.formView, name = 'FormView'),
+    path('addmaids/', views.maidView, name = 'MaidView'),
+    path('roomlist/', views.roomListView, name = 'roomListView')
 ]

@@ -16,7 +16,16 @@
             {% csrf_token %}
             <button class="btn btn-primary btn-sm" type="submit">Log Out</button>
         </form>
+        <form action = "/addroom/" method="post">
+            {% csrf_token %}
+            <button class="btn btn-primary btn-sm" type="submit">Add Rooms</button>
+        </form>
+        <form action = "/addmaids/" method="post">
+            {% csrf_token %}
+            <button class="btn btn-primary btn-sm" type="submit">Add Maids</button>
+        </form>
     {% endif %}
+
 </nav>
 {% block content %}
  
