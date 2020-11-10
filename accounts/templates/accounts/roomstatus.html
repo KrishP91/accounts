@@ -12,10 +12,8 @@
                 <br>
                 {{ room.num }}
                 {{ room.room_type }}
-                {{ form }}
+                {{ form.as_p }}
             {% endfor %}
-
-            <br>
             <input type="submit" value="Submit">
         </form>
     </p>
