@@ -6,16 +6,30 @@
 </head>
 <body>
     <p>
+
+        {% for room in num %}
+
+
+            <br>
+
+
+            {{ room.num }}
+            {{ room.room_type }}
+            {{ room.check_out }}
+            {{ room.room_clean }}
         <form action="/roomlist/" method="post">
-            {% csrf_token %}
-            {% for room in num %}
-                <br>
-                {{ room.num }}
-                {{ room.room_type }}
-                {{ form.as_p }}
-            {% endfor %}
-            <input type="submit" value="Submit">
+        {% csrf_token %}
+            <input id="room_num" type="hidden" name="room_num" value="{{ room.id }}" >
+            <input id="button" type="hidden" name="button" value="checkout" >
+            <input type="submit" value="Checkout">
         </form>
+        <form action="/roomlist/" method="post">
+        {% csrf_token %}
+            <input id="room_num" type="hidden" name="room_num" value="{{ room.id }}" >
+            <input id="button" type="hidden" name="button" value="clean" >
+            <input type="submit" value="Clean">
+        </form>
+        {% endfor %}
     </p>
 
 </body>

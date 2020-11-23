@@ -78,10 +78,26 @@ def maidView(request):
 def roomListView(request):
     if request.user.is_authenticated:
         if request.method == 'POST':
-            form = roomListForm(request.POST)
-            if form.is_valid():
+            form = Room.objects.get(id=request.POST.get('room_num'))
+            if form:
+                if request.POST.get('button')=="checkout":
+                    if(form.check_out==True):
+                        form.check_out=False
+                    else:
+                        form.check_out=True
+                if request.POST.get('button')=="clean":
+                    if(form.room_clean==True):
+                        form.room_clean=False
+                    else:
+                        form.room_clean=True
                 form.save()
-                return HttpResponse('Updated')
+                data = Room.objects.all()
+                form = roomListForm()
+                room = {
+                    "num": data,
+                    "form": form
+                }
+                return render(request, 'accounts/roomstatus.html', room)
         else:
             data = Room.objects.all()
             form = roomListForm()
